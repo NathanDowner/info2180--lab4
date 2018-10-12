@@ -1,22 +1,14 @@
 window.onload = function() {
-  const firstBound = document.getElementById('boundary1');
+  // const firstBound = document.getElementById('boundary1');
   const start = document.querySelector('#start');
   const end = document.querySelector('#end');
-
-
-  // firstBound.addEventListener('mouseover', function (e) {
-  //   console.log(e.target);
-  //   console.log(firstBound);
-  //   firstBound.classList.toggle('youlose');
-  // });
+  const boundaries = document.querySelectorAll('div.boundary');
 
   
-
-  
-
-  firstBound.addEventListener('mouseover', handleMouseOver);
-
+  // firstBound.addEventListener('mouseover', handleMouseOver);
+  boundaries.forEach(b => b.addEventListener('mouseover', handleMouseOver));
  
+  document.get
 
   function handleMouseOver(e) {
     e.target.classList.toggle('youlose');
