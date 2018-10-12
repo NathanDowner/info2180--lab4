@@ -8,8 +8,12 @@ window.onload = function() {
   // firstBound.addEventListener('mouseover', handleMouseOver);
   boundaries.forEach(b => b.addEventListener('mouseover', handleMouseOver));
   end.addEventListener('mouseover', didWin);
- 
-  document.get
+  start.addEventListener('click', e => {
+    boundaries.forEach(b => {
+      if (b.classList.contains('youlose'))
+        b.classList.remove('youlose');
+    });
+  });
 
   function handleMouseOver(e) {
     if (e.target.classList.contains('example')) {
