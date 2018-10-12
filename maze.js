@@ -4,6 +4,7 @@ window.onload = function() {
   const end = document.querySelector('#end');
   const boundaries = document.querySelectorAll('div.boundary');
   const status = document.querySelector('h2#status');
+  const maze = document.getElementById('maze');
 
   
   // firstBound.addEventListener('mouseover', handleMouseOver);
@@ -16,6 +17,12 @@ window.onload = function() {
         b.classList.remove('youlose');
       status.innerHTML = 'Move your mouse over the "S" to begin.'
     });
+  });
+
+  maze.addEventListener('mouseleave', e => {
+    console.log(e);
+    makeRed();
+    status.innerHTML = 'You lose because you cheated';
   });
 
   function handleMouseOver(e) {
@@ -38,9 +45,13 @@ window.onload = function() {
       status.innerHTML = 'You Win';
     } else {
       status.innerHTML = "You Lose";
-    }
-      // alert('You Win!');
-      
+    }   
+  }
+
+  function makeRed(e) {
+    boundaries.forEach( b => {
+      b.classList.add('youlose');
+    });
   }
 
 };
