@@ -15,15 +15,17 @@ window.onload = function() {
     boundaries.forEach(b => {
       if (b.classList.contains('youlose'))
         b.classList.remove('youlose');
-      status.innerHTML = 'Move your mouse over the "S" to begin.'
+      status.innerHTML = 'Move your mouse over the "S" to begin.';
+      maze.addEventListener('mouseleave', dontCheat)
     });
   });
 
-  maze.addEventListener('mouseleave', e => {
-    console.log(e);
+  // maze.addEventListener('mouseleave', dontCheat);
+
+  function dontCheat (e) {
     makeRed();
     status.innerHTML = 'You lose because you cheated';
-  });
+  }
 
   function handleMouseOver(e) {
     if (e.target.classList.contains('example')) {
@@ -42,10 +44,11 @@ window.onload = function() {
     });
     
     if (count == 0) {
-      status.innerHTML = 'You Win';
+      status.innerHTML = 'You Win! Click "S" to start again.';
     } else {
-      status.innerHTML = "You Lose";
-    }   
+      status.innerHTML = 'You Lose. Click "S" to start again.';
+    }
+    maze.removeEventListener('mouseleave', dontCheat);   
   }
 
   function makeRed(e) {
