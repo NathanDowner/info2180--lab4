@@ -36,6 +36,8 @@ window.onload = function() {
 
     } else {
       e.target.classList.add('youlose');
+      status.innerHTML = '<p><span style="color:red;">You Lose.</span> Click "S" to start again.</p>';
+      endGame();
     } 
   }
 
@@ -53,9 +55,7 @@ window.onload = function() {
     
     if (count == 0) {
       status.innerHTML = '<p><span style="color:green;">You Win!</span> Click "S" to start again.</p>';
-    } else {
-      status.innerHTML = '<p><span style="color:red;">You Lose.</span> Click "S" to start again.</p>';
-    }
+    } 
     endGame();
 
   }
