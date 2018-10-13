@@ -7,33 +7,41 @@ window.onload = function() {
   const maze = document.getElementById('maze');
 
   
-  // firstBound.addEventListener('mouseover', handleMouseOver);
-  boundaries.forEach(b => b.addEventListener('mouseover', handleMouseOver));
-  end.addEventListener('mouseover', didWin);
+  start.addEventListener('mouseover', startGame);  
 
   start.addEventListener('click', e => {
     boundaries.forEach(b => {
       if (b.classList.contains('youlose'))
         b.classList.remove('youlose');
-      status.innerHTML = 'Move your mouse over the "S" to begin.';
-      maze.addEventListener('mouseleave', dontCheat)
+      status.textContent = "Let's go!";
+      startGame();
     });
   });
 
-  // maze.addEventListener('mouseleave', dontCheat);
+  function startGame(e) {
+    loadBoundaries();
+    maze.addEventListener('mouseleave', dontCheat);
+    end.addEventListener('mouseover', didWin);
+  }
 
-  function dontCheat (e) {
-    makeRed();
-    status.innerHTML = 'You lose because you cheated';
+  function endGame(e) {
+    unloadBoundaries();
+    maze.removeEventListener('mouseleave', dontCheat);
+    start.removeEventListener('mouseover', startGame);
+
   }
 
   function handleMouseOver(e) {
     if (e.target.classList.contains('example')) {
 
     } else {
-        e.target.classList.add('youlose');
-    }
-      
+      e.target.classList.add('youlose');
+    } 
+  }
+
+  function dontCheat (e) {
+    makeRed();
+    status.innerHTML = 'NO CHEATING! Click "S" to start again.';
   }
 
   function didWin(e) {
@@ -44,17 +52,41 @@ window.onload = function() {
     });
     
     if (count == 0) {
-      status.innerHTML = 'You Win! Click "S" to start again.';
+      status.innerHTML = '<p><span style="color:green;">You Win!</span> Click "S" to start again.</p>';
     } else {
-      status.innerHTML = 'You Lose. Click "S" to start again.';
+      status.innerHTML = '<p><span style="color:red;">You Lose.</span> Click "S" to start again.</p>';
     }
-    maze.removeEventListener('mouseleave', dontCheat);   
+    endGame();
+
+  }
+
+  function loadBoundaries () {
+    boundaries.forEach(b =>{
+      if (b.classList.contains('example')) {
+
+      } else {
+        b.addEventListener('mouseover', handleMouseOver);
+      }
+    });
+  }
+
+  function unloadBoundaries() {
+    boundaries.forEach(b => {
+      if (b.classList.contains('example')) {
+
+      } else {
+        b.removeEventListener('mouseover', handleMouseOver);
+      }
+    });
   }
 
   function makeRed(e) {
     boundaries.forEach( b => {
-      b.classList.add('youlose');
+      if (b.classList.contains('example')) {
+
+      } else {
+        b.classList.add('youlose');
+      }
     });
   }
-
 };
