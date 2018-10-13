@@ -28,7 +28,7 @@ window.onload = function() {
     unloadBoundaries();
     maze.removeEventListener('mouseleave', dontCheat);
     start.removeEventListener('mouseover', startGame);
-
+    document.querySelector('#start').style.cursor = 'pointer';
   }
 
   function handleMouseOver(e) {
@@ -80,7 +80,7 @@ window.onload = function() {
     });
   }
 
-  function makeRed(e) {
+  function makeRed() {
     boundaries.forEach( b => {
       if (b.classList.contains('example')) {
 
