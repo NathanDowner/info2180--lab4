@@ -44,6 +44,7 @@ window.onload = function() {
   function dontCheat (e) {
     makeRed();
     status.innerHTML = 'NO CHEATING! Click "S" to start again.';
+    endGame();
   }
 
   function didWin(e) {
