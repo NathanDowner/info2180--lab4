@@ -1,12 +1,12 @@
 window.onload = function() {
 
   //added jQuery to be able to add a url to the cursor property.
-  const script = document.createElement('script');
-  script.src = "https://code.jquery.com/jquery-3.3.1.min.js";
-  script.integrity = "sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=";
-  script.crossOrigin = "anonymous";
+  // const script = document.createElement('script');
+  // script.src = "https://code.jquery.com/jquery-3.3.1.min.js";
+  // script.integrity = "sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=";
+  // script.crossOrigin = "anonymous";
 
-  document.getElementsByTagName('head')[0].appendChild(script);
+  // document.getElementsByTagName('head')[0].appendChild(script);
 
   //selectors
   const start = document.querySelector('#start');
@@ -103,6 +103,7 @@ window.onload = function() {
   }
 
   function cursorToDot() {
-    $('body').css({'cursor': 'url(cursor.cur), default'});
+    // $('body').css({'cursor': 'url(cursor.cur), default'});
+    document.body.style.cursor = "url(cursor.cur), default";
   }
 };
